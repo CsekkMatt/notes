@@ -7,4 +7,20 @@
     min-height: 200px;
     display: flex;
     flex-direction: column;
-  }
+}
+
+button.mat-raised-button {
+    display: inline-block;
+    width: 80px;
+}
+
+.button-container {
+    width: 80px;
+    /* Adjust as needed */
+    height: 80px;
+    /* Adjust as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}

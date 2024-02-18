@@ -1,3 +1,18 @@
-<div *ngFor="let note of notes">
-  <app-note [note]="note"></app-note>
+<div class="parent">
+  <div *ngFor="let note of notes">
+    <app-note [note]="note" [editingNoteId]="editingNoteId" (edit)="startEditing($event)"
+      (stopEditing)="stopEditing()" (delete)="deleteNote($event)">
+    </app-note>
+  </div>
+  <form (ngSubmit)="createNote(newNote)" #noteForm="ngForm" class="create-note-form">
+    <mat-form-field appearance="outline" class="create-note-field">
+      <mat-label>Title</mat-label>
+      <input matInput type="text" [(ngModel)]="newNote.title" name="title" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="create-note-field">
+      <mat-label>Content</mat-label>
+      <textarea matInput [(ngModel)]="newNote.content" name="content" required></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Create Note</button>
+  </form>
 </div>

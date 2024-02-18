@@ -1,4 +1,18 @@
-<div class="note">
-    <h2>{{ note.title }}</h2>
+<div class="note" *ngIf="note.id.toString() !== editingNoteId">
+    <h3>{{ note.title }}</h3>
     <p>{{ note.content }}</p>
+    <div class="button-container">
+        <button mat-raised-button color="accent" (click)="edit.emit(note.id.toString())">Edit</button>
+        <button mat-raised-button color="warn" (click)="delete.emit(note.id.toString())">Delete</button>
+    </div>
+</div>
+<div class="note" *ngIf="note?.id?.toString() === editingNoteId">
+    <input [(ngModel)]="note.title" placeholder="Title">
+    <input [(ngModel)]="note.content" placeholder="Content">
+    <div class="button-container">
+        <button mat-raised-button color="accent" (click)="save()">Save</button>
+    </div>
+    <div class="button-container">
+        <button mat-raised-button color="warn" (click)="stopEditingNote()">Cancel</button>
+    </div>
 </div>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Note } from '../model/note';
+import { NewNote } from '../model/new.note';
 
 @Injectable({
     providedIn: 'root'
@@ -19,7 +20,7 @@ export class NoteService {
         return this.http.get<Note>(`${this.apiUrl}/${id}`);
     }
 
-    addNote(note: Note): Observable<Note> {
+    addNote(note: NewNote): Observable<Note> {
         return this.http.post<Note>(this.apiUrl, note);
     }
 
@@ -27,7 +28,7 @@ export class NoteService {
         return this.http.put<Note>(`${this.apiUrl}/${note.id}`, note);
     }
 
-    deleteNote(id: number): Observable<Note> {
+    deleteNote(id: string): Observable<Note> {
         return this.http.delete<Note>(`${this.apiUrl}/${id}`);
     }
 }
